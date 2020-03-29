@@ -87,7 +87,7 @@ button:focus {
     border-color: #dddddd;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .body img {
@@ -108,7 +108,7 @@ ul.hourly-weather {
     position: absolute;
     top: 190px;
     left: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     transition: all ease 1s;
     list-style: none;
     list-style-position: inside;
@@ -138,8 +138,19 @@ ul.weekly-weather {
 }
 
 .weekly-weather li {
-    width: 120px;
+    width: 100px;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0 10px;
+}
+.weekly-weather li:hover, .weekly-weather li:active  {
+    background-color: #ddd;
+}
+.day {
+    background-color: white;
+}
+.selected-element {
+    background-color: #ddd;   
 }
 
 .day-temp,

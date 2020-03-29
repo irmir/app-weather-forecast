@@ -62,3 +62,14 @@ export const increaseTimyByHour = (time, increment) => ({
     type: 'INCREASE_TIME_BY_HOUR',
     payload: {time, increment}
 })
+
+export const selectDayForForecast = (date, list, id) => ({
+    type: 'SELECT_DAY_FOR_FORECAST',
+    payload: {date, list, id}
+})
+
+export const returnForecastToday = (date, list, id) => ({
+    type: 'RETURN_FORECAST_TODAY',
+    payload: {date, list, id}
+})
+

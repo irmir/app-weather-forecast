@@ -1,34 +1,49 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { connect } from 'react-redux'
 import { WeekdayForecast } from './components/'
 import { bindActionCreators } from 'redux'
 
-import { getAverageMinTemp } from '../../../Header/actions'
+import { selectDayForForecast, returnForecastToday } from '../../../Header/actions'
 
-const WeeklyWeatherComponent = ({ listSlasedByDayStartMorning, indexTimeNow, firstDay, nightTemp, dayTemp }) => {
-debugger
-    if (listSlasedByDayStartMorning) {
-        listSlasedByDayStartMorning.splice(0, 1)
-    }
+const WeeklyWeatherComponent = ({ selectedDay, listSlasedByDay, otherDaysForecast, indexTimeNow, firstDayForecast, nightTemp, dayTemp, selectDay, selectDayToday, backgroundColor }) => {
+    debugger
+
+    const onClick = useCallback((date, list, id) => (event) => {
+        debugger
+        
+        selectDay(date, list, id)
+    }, [])
+    debugger
+    const onClickToday = useCallback((date, list, id) => () => {
+
+        debugger
+        selectDayToday(date, list, id)
+    })
+    debugger
     return (
         <ul className="weekly-weather">
             {
-                firstDay &&
-                <li><WeekdayForecast
+                firstDayForecast &&
+                <li style={{backgroundColor: selectedDay === firstDayForecast[0].dt ? "#ddd" : "white"  }}
+                className="day" onClick={onClickToday(firstDayForecast[0].dt_txt, listSlasedByDay, firstDayForecast[0].dt)} key="0" >
+                    <WeekdayForecast
                     dayTemp={Math.round(dayTemp - 273)}
                     nightTemp={Math.round(nightTemp - 273)}
-                    image={firstDay[0].weather[0].icon}
-                    date={new Date(firstDay[0].dt_txt).toLocaleString('en', {
+                    image={firstDayForecast[0].weather[0].icon}
+                    date={new Date(firstDayForecast[0].dt_txt).toLocaleString('en', {
                         weekday: 'short',
                         day: "numeric",
                         month: 'short',
                     })}
-                    description={firstDay[0].weather[0].description} />
+                    description={firstDayForecast[0].weather[0].description} />
                 </li>
             }
             {
-                listSlasedByDayStartMorning.map((item, index) => (
-                    <li key={index} ><WeekdayForecast
+                otherDaysForecast &&
+                otherDaysForecast.map((item, index) => (
+                    <li style={{backgroundColor: selectedDay === item[0].dt ? "#ddd" : "white"  }}
+                    className="day" onClick={onClick(item[0].dt_txt, listSlasedByDay, item[0].dt)} key={index + 1}>
+                        <WeekdayForecast
                         dayTemp={Math.round((item[0].main.temp + item[1].main.temp + item[2].main.temp + item[3].main.temp + item[4].main.temp + item[5].main.temp) / 6 - 273)}
                         nightTemp={Math.round((item[6].main.temp + item[7].main.temp) / 2 - 273)}
                         image={item[indexTimeNow].weather[0].icon}
@@ -37,7 +52,7 @@ debugger
                             day: "numeric",
                             month: 'short',
                         })}
-                        description={item[indexTimeNow].weather[0].description}/>
+                        description={item[indexTimeNow].weather[0].description} />
                     </li>
                 ))
             }
@@ -51,11 +66,15 @@ export const WeeklyWeather = connect(
         listSlasedByDay: state.currentWeather.listSlasedByDay,
         listSlasedByDayStartMorning: state.currentWeather.listSlasedByDayStartMorning,
         indexTimeNow: state.currentWeather.indexTimeNow,
-        firstDay: state.currentWeather.firstDay,
+        firstDayForecast: state.currentWeather.firstDayForecast,
+        otherDaysForecast: state.currentWeather.otherDaysForecast,
         nightTemp: state.currentWeather.nightTemp,
-        dayTemp: state.currentWeather.dayTemp,  
+        dayTemp: state.currentWeather.dayTemp,
+        backgroundColor: state.currentWeather.backgroundColor,
+        selectedDay: state.currentWeather.selectedDay
     }),
     (dispatch) => bindActionCreators({
-        getMinTemp: getAverageMinTemp,
+        selectDay: selectDayForForecast,
+        selectDayToday: returnForecastToday
     }, dispatch)
 )(WeeklyWeatherComponent)

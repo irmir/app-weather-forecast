@@ -2,10 +2,10 @@ import React, { useCallback } from 'react'
 import { connect } from 'react-redux'
 
 export const TimeComponent = ({ time, currentTime, increaseTime, increment }) => {
-    debugger
+    // debugger
 
     const increase = useCallback((time) => {
-        debugger
+        // debugger
         time.setHours(time.getHours() + 1)
 
         return `${time.toLocaleTimeString([], {
