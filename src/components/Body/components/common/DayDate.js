@@ -9,7 +9,7 @@ export const DayDate = ({date}) => {
     });
 
     if (date === currentDate) {
-        return <>today</>
+        return <>Today</>
     } else {
         if (date) {
             return <>{date}</>

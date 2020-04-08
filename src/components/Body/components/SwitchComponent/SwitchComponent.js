@@ -2,17 +2,15 @@ import React, { useCallback } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getNextForecast, getCorrectShift, returnToStart } from '../../../Header/actions'
+import { getNextForecast, getCorrectShift, returnToStart } from './actions'
 
 const Switch = ({ getNext, getShift, getStart, left, width, offset, isEnd }) => {
-    debugger
 
     const onClick = useCallback((left, width, offset, isEnd) => () => {
         if (isEnd) {
             getStart()
         } else {
             const rest = width - 600 - (offset + 600)
-            debugger
             if (rest >= 0) {
                 getNext(left, offset);
             } else {
@@ -28,10 +26,10 @@ const Switch = ({ getNext, getShift, getStart, left, width, offset, isEnd }) => 
 
 export const SwitchComponent = connect(
     (state) => ({
-        left: state.currentWeather.left,
-        width: state.currentWeather.width,
-        offset: state.currentWeather.offset,
-        isEnd: state.currentWeather.isEnd
+        left: state.body.left,
+        width: state.body.width,
+        offset: state.body.offset,
+        isEnd: state.body.isEnd
     }),
     (dispatch) => bindActionCreators({
         getNext: getNextForecast,

@@ -3,29 +3,41 @@ import { connect } from 'react-redux'
 
 import { HourForecast } from './components'
 
-const HourlyWeatherComponent = ({ listCurrentDate, listCurrentTime, count, left, width }) => {
+const HourlyWeatherComponent = ({ fullSelectedDay, hourlyForecast, left, width }) => {
     debugger
-    if (listCurrentDate) {
 
+    if (fullSelectedDay) {
         return (
             <ul className="hourly-weather"
                 style={
                     { left: `${left}px`, width: `${width}` }} >
                 {
-                    [...Array(count)].map((elem, index) => (
+                    fullSelectedDay.map((item, index) => (
                         <li className="hour" key={index} >
-                            <HourForecast image={listCurrentTime.weather[0].icon}
-                                temp={Math.round(listCurrentTime.main.temp - 273)} />
+                            <HourForecast image={item.weather[0].icon}
+                                temp={Math.round(item.main.temp - 273)}
+                                time={item.time24}
+                            />
                         </li>
                     ))
-                } {
-                    listCurrentDate.map((item, index) => (
-                        [...Array(3)].map(elem => (
-                            <li className="hour" key={index} >
-                                <HourForecast image={item.weather[0].icon}
-                                    temp={Math.round(item.main.temp - 273)} />
-                            </li>
-                        ))
+                }
+            </ul>
+        )
+    }
+
+    if (hourlyForecast) {
+        return (
+            <ul className="hourly-weather"
+                style={
+                    { left: `${left}px`, width: `${width}` }} >
+                {
+                    hourlyForecast.map((item, index) => (
+                        <li className="hour" key={index} >
+                            <HourForecast image={item.weather[0].icon}
+                                temp={Math.round(item.main.temp - 273)}
+                                time={item.time24}
+                            />
+                        </li>
                     ))
                 }
             </ul>
@@ -35,11 +47,9 @@ const HourlyWeatherComponent = ({ listCurrentDate, listCurrentTime, count, left,
 
 export const HourlyWeather = connect(
     (state) => ({
-        currentTime: state.currentWeather.currentTime,
-        count: state.currentWeather.count,
-        listCurrentTime: state.currentWeather.listCurrentTime,
-        listCurrentDate: state.currentWeather.listCurrentDate,
-        left: state.currentWeather.left,
-        width: state.currentWeather.width
+        left: state.body.left,
+        width: state.body.width,
+        fullSelectedDay: state.body.fullSelectedDay,
+        hourlyForecast: state.body.hourlyForecast
     })
 )(HourlyWeatherComponent)

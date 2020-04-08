@@ -7,7 +7,7 @@ import { sendRequestWeatherAction } from './actions'
 
 
 const HeaderComponent = ({getWeather, inputValue})=>  {
-    
+
     useEffect(() => {
         debugger
         getWeather(inputValue)        

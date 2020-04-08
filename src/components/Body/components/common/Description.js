@@ -8,6 +8,6 @@ const DescriptionComponent = ({ description }) => {
 
 export const Description = connect(
     (state) => ({
-        description: state.currentWeather.description
+        description: state.body.description
     })
 )(DescriptionComponent)

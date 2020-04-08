@@ -2,11 +2,11 @@ const defaultState = {
     inputValue: 'Minsk',
 }
 
-export const listCityReducer = (state = defaultState, action) => {
+export const cityReducer = (state = defaultState, action) => {
     switch(action.type) {
 
         case 'GET_INPUT_VALUE': {
-debugger
+            
             return {
                 ...state,
                 inputValue: action.payload
@@ -16,8 +16,6 @@ debugger
         default: {
             return state
         }
-
-
     }
 }
 
