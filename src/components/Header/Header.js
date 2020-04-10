@@ -14,13 +14,10 @@ const HeaderComponent = ({getWeather, inputValue})=>  {
 }, [])
 
     return(
-        <>
-        {/* <h1>Current weather and forecasts in your city</h1> */}
         <div className="header">
             <CityInput />
             <ButtonGetWeather />
         </div>
-        </>
     )
 }
 

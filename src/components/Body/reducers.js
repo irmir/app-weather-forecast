@@ -1,6 +1,7 @@
 const defaultState = {
     list: '',
     isError: false,
+    isLoading: true,
     image: null,
     temperature: '',
     description: '',
@@ -172,6 +173,7 @@ export const listWeatherReducer = (state = defaultState, action) => {
                 description: list[0]['weather'][0].description,
                 city: action.payload.city.name,
                 country: action.payload.city.country,
+                isLoading: false,
                 listSlasedByDay,
                 width,
                 weeklyForecast,
