@@ -1,5 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with Create React App
 
+Simple application written with react, redux, react-thunk. To launch this app on you localhost, clone this repo, run <code>npm install</code> from root folder, and from /backend folder. then run <code>npm start</code> in both folders. You should also have mongodb up and running.
+
+Screenshots:
 ## Available Scripts
 
 In the project directory, you can run:

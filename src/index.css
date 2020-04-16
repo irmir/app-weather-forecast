@@ -13,6 +13,7 @@ h2 {
 
 h3 {
     font-size: 30px;
+    padding-top: 10px;
 }
 
 ul {
@@ -93,7 +94,26 @@ button:focus {
 
 .current-weather {
     padding: 0 15px;
+} 
+
+.current-weather span {
+  vertical-align: top;
 }
+
+.current-weather p {
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 0;
+}
+
+.image {
+  display: inline-block;
+  width: 80px;
+}
+.image img {
+  width: 100%;
+  object-fit: cover;
+} 
 
 .hourly-weather,
 .weekly-weather {
@@ -124,6 +144,9 @@ ul.hourly-weather {
 .switch button {
     border: none;
     color: #6d6b6b;
+}
+.switch button:disabled {
+  color: #dddddd;
 }
 
 ul.weekly-weather {

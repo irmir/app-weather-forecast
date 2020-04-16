@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { HourForecast } from './components'
 
 const HourlyWeatherComponent = ({ fullSelectedDay, hourlyForecast, left, width }) => {
-    debugger
 
     if (fullSelectedDay) {
         return (

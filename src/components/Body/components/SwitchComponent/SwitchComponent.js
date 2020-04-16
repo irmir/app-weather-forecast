@@ -20,7 +20,7 @@ const Switch = ({ getNext, getShift, getStart, left, width, offset, isEnd }) => 
     }, [])
 
     if (width) {
-        return <button onClick={onClick(left, width, offset, isEnd)}>&lang; &emsp; &rang;</button>
+        return <button onClick={onClick(left, width, offset, isEnd)} disabled={width > 600 ? false: true }>&lang; &emsp; &rang;</button>
     } else return null
 }
 
