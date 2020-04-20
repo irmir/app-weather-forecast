@@ -5,7 +5,6 @@ import { Image } from '../../common'
 import { Temperature } from '../../common'
 
 export const HourForecast = ({ image, temp, time }) => {
-    debugger
   
     return (
         <>

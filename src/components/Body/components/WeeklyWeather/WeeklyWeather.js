@@ -6,17 +6,15 @@ import { WeekdayForecast } from './components/'
 import { selectDayForForecast, returnForecastToday } from './actions'
 
 const WeeklyWeatherComponent = ({ weeklyForecast, selectedDay, selectDay, selectDayToday }) => {
-    debugger
 
     const onClick = useCallback((date, id, index) => () => {
-        debugger
         if (index === 0) {
             selectDayToday(id)
         } else {
             selectDay(date, id)
         }
     }, [])
-    debugger
+    
     return (
         <ul className="weekly-weather">
             {

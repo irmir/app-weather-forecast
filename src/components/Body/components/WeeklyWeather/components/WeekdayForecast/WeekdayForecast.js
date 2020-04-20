@@ -5,7 +5,6 @@ import { DayDate } from '../../../common'
 
 export const WeekdayForecast = ({ image, description, date, dayTemp, nightTemp }) => {
 
-    debugger
     return (
         <>
             <p><DayDate date={date} /></p>

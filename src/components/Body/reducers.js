@@ -182,7 +182,7 @@ export const listWeatherReducer = (state = defaultState, action) => {
         }
 
         case 'GET_ERROR': {
-            // alert("Error! Check how you writed name city")
+            alert("Error! Check how you writed name city")
             return {
                 ...state,
             }
@@ -190,7 +190,7 @@ export const listWeatherReducer = (state = defaultState, action) => {
 
         case 'GET_NEXT_FORECAST': {
             const widthBody = 600
-            debugger
+            
             return {
                 ...state,
                 left: action.payload.left - widthBody,
@@ -199,7 +199,6 @@ export const listWeatherReducer = (state = defaultState, action) => {
         }
 
         case 'GET_CORRECT_SHIFT': {
-            debugger
             const widthBody = 600
             return {
                 ...state,
@@ -219,7 +218,6 @@ export const listWeatherReducer = (state = defaultState, action) => {
 
 
         case 'SELECT_DAY_FOR_FORECAST': {
-            debugger
             const date = action.payload.date.slice(0, 11)
             const { listSlasedByDay } = state
 
@@ -247,6 +245,7 @@ export const listWeatherReducer = (state = defaultState, action) => {
                 ...state,
                 width: fullSelectedDay.length * width_item,
                 left: 0,
+                offset: 0,
                 selectedDay: action.payload.id,
                 fullSelectedDay,
             }
@@ -262,6 +261,7 @@ export const listWeatherReducer = (state = defaultState, action) => {
                 hourlyForecast,
                 width: hourlyForecast.length * width_item,
                 left: 0,
+                offset: 0,
                 selectedDay: action.payload,
             }
         }

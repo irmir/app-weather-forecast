@@ -7,17 +7,18 @@ import { getNextForecast, getCorrectShift, returnToStart } from './actions'
 const Switch = ({ getNext, getShift, getStart, left, width, offset, isEnd }) => {
 
     const onClick = useCallback((left, width, offset, isEnd) => () => {
+        debugger
         if (isEnd) {
             getStart()
         } else {
             const rest = width - 600 - (offset + 600)
-            if (rest >= 0) {
+            if (rest > 0) {
                 getNext(left, offset);
             } else {
                 getShift(width)
             }
         }
-    }, [])
+    }, [left, width, offset, isEnd])
 
     if (width) {
         return <button onClick={onClick(left, width, offset, isEnd)} disabled={width > 600 ? false: true }>&lang; &emsp; &rang;</button>

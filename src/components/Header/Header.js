@@ -5,11 +5,9 @@ import { connect} from 'react-redux'
 
 import { sendRequestWeatherAction } from './actions'
 
-
 const HeaderComponent = ({getWeather, inputValue})=>  {
 
     useEffect(() => {
-        debugger
         getWeather(inputValue)        
 }, [])
 

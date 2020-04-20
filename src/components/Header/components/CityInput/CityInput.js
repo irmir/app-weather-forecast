@@ -8,11 +8,11 @@ import { sendRequestWeatherAction } from '../../actions'
 const CityInputComponent = ({ onChange, inputValue, onKey }) => {
 
     const onKeyDown = useCallback((inputValue) => (event) => {
-        debugger
+
         if (event.keyCode === 13) {
             return onKey(inputValue);
         }
-    })
+    },[inputValue])
 
     return (
         <input onChange={onChange} onKeyDown={onKeyDown(inputValue)} value={inputValue} type="text" autocomplete="on" />

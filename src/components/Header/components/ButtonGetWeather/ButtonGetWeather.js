@@ -7,9 +7,8 @@ import { sendRequestWeatherAction } from '../../actions'
 const ButtonGetWeatherComponent = ({getWeather, city }) => {
 
     const onClick = useCallback((city) => () => {
-        debugger
         getWeather(city);
-    })
+    }, [city])
 
     return <button onClick={onClick(city)}>Search</button>
 }

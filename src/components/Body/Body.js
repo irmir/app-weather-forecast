@@ -6,7 +6,6 @@ import { WeeklyWeather } from './components'
 import { SwitchComponent } from './components'
  
 export const Body = () => {
-    debugger
     
     return (
         <div className="body">

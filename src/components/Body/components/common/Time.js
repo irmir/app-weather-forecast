@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 export const TimeComponent = ({ time, currentTime }) => {
-    debugger
 
     if (time) {
         return <>{time}</>
