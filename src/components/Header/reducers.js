@@ -1,5 +1,5 @@
 const defaultState = {
-    inputValue: 'Minsk',
+    inputValue: '',
 }
 
 export const cityReducer = (state = defaultState, action) => {
@@ -8,8 +8,14 @@ export const cityReducer = (state = defaultState, action) => {
         case 'GET_INPUT_VALUE': {
             
             return {
-                ...state,
                 inputValue: action.payload
+            }
+        }
+
+        case 'GET_WEATHER': {
+            return {
+                inputValue: ''
+
             }
         }
 

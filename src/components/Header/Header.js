@@ -1,30 +1,36 @@
 import React, { useEffect } from 'react'
-import { CityInput, ButtonGetWeather } from './components'
+import { CityInput, ButtonGetWeather, Location } from './components'
 import { bindActionCreators } from 'redux'
 import { connect} from 'react-redux'
 
-import { sendRequestWeatherAction } from './actions'
+import { sendRequestWeatherByCoordinates } from './actions'
 
-const HeaderComponent = ({getWeather, inputValue})=>  {
+const HeaderComponent = ({getWeather})=>  {
 
     useEffect(() => {
-        getWeather(inputValue)        
+
+        navigator.geolocation.getCurrentPosition(
+        function(position){
+            const latitude = position.coords.latitude
+            const longitude = position.coords.longitude
+
+            getWeather(latitude, longitude )
+        })
 }, [])
 
-    return(
+    return (
         <div className="header">
             <CityInput />
             <ButtonGetWeather />
+            <Location />
         </div>
     )
 }
 
 export const Header = connect(
-    (state) => ({
-        inputValue:state.header.inputValue
-    }),
+    null,
     (dispatch) => bindActionCreators ({
-        getWeather: sendRequestWeatherAction
+        getWeather: sendRequestWeatherByCoordinates
     }, dispatch)
 )(HeaderComponent)
 

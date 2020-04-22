@@ -15,7 +15,7 @@ const CityInputComponent = ({ onChange, inputValue, onKey }) => {
     },[inputValue])
 
     return (
-        <input onChange={onChange} onKeyDown={onKeyDown(inputValue)} value={inputValue} type="text" autocomplete="on" />
+        <input onChange={onChange} onKeyDown={onKeyDown(inputValue)} value={inputValue} type="text" autoComplete="on" placeholder="City name" />
     )
 }
 

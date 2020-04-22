@@ -60,7 +60,7 @@ button:focus {
     box-sizing: border-box;
 }
 
-.header button {
+.header .search {
     border-radius: 4px;
     width: 86px;
     font-size: 14px;
@@ -68,9 +68,16 @@ button:focus {
     color: white;
     border-color: #e96e50;
 }
-
-.header button:hover {
+/* .header button:hover {
     background-color: #c1593f;
+} */
+.header .location {
+  border: none;
+  text-decoration: underline;
+  padding-left: 12px;
+}
+.location button:hover {
+  background-color: #ddd;
 }
 
 .body {

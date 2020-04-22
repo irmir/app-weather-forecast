@@ -10,7 +10,7 @@ const ButtonGetWeatherComponent = ({getWeather, city }) => {
         getWeather(city);
     }, [city])
 
-    return <button onClick={onClick(city)}>Search</button>
+    return <button onClick={onClick(city)} className="search">Search</button>
 }
 
 export const ButtonGetWeather = connect(

@@ -24,7 +24,7 @@ const defaultState = {
     time: null,
     fullSelectedDay: '',
     hourlyForecast: '',
-    weeklyForecast: ''
+    weeklyForecast: '',
 }
 
 export const listWeatherReducer = (state = defaultState, action) => {
@@ -182,7 +182,7 @@ export const listWeatherReducer = (state = defaultState, action) => {
         }
 
         case 'GET_ERROR': {
-            alert("Error! Check how you writed name city")
+            alert("Error! Check the spelling of the city")
             return {
                 ...state,
             }
